@@ -1,0 +1,441 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * PetClin design system — Modern Veterinary Care.
+ * Tokens em oklch derivados da identidade da marca:
+ * verde petróleo #078C89, vermelho #D91F35, azul escuro #173D73.
+ */
+
+@theme inline {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-outfit: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-teal-soft: var(--teal-soft);
+  --color-services-sky: var(--services-sky);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.patients-background {
+  --deep-foreground: var(--deep);
+  background-image: url("/images/backgrounds/pacientes-fundo-aqua.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.petshop-section {
+  --petshop-wash: color-mix(in oklab, var(--teal-soft) 58%, var(--background));
+  --petshop-photo-shadow: 0 12px 28px -12px color-mix(in oklab, var(--deep) 24%, transparent);
+  background: linear-gradient(110deg, var(--background) 0%, var(--background) 36%, var(--petshop-wash) 100%);
+}
+
+.petshop-composition { position: relative; isolation: isolate; width: 100%; aspect-ratio: 1.02; }
+.petshop-photo { position: absolute; box-shadow: var(--petshop-photo-shadow); border-radius: 8px; }
+.petshop-photo-main { top: 0; right: 0; width: 88%; height: 70%; z-index: 1; }
+.petshop-photo-products { left: 0; bottom: 0; width: 42%; height: 36%; z-index: 2; }
+.petshop-photo-accessories { right: 0; bottom: 0; width: 51%; height: 24%; z-index: 2; }
+.petshop-photo-placeholder { background: var(--petshop-wash); border: 1px dashed var(--border); border-radius: 8px; }
+.petshop-outline { position: absolute; top: 6%; left: 4%; width: 84%; height: 68%; border: 1px solid var(--border); border-radius: 8px; pointer-events: none; }
+@media (min-width: 640px) {
+  .petshop-composition { aspect-ratio: 1.12; }
+  .petshop-photo-main { width: 83%; height: 77%; }
+  .petshop-photo-products { bottom: 3%; width: 38%; height: 39%; }
+  .petshop-photo-accessories { right: 6%; width: 37%; height: 28%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .petshop-section img, .petshop-section a { transition: none; }
+}
+
+.hero-background {
+  background:
+    radial-gradient(ellipse 46% 40% at 88% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(ellipse 40% 34% at 4% 24%, rgba(94, 188, 207, 0.2) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(ellipse 36% 30% at 74% 78%, rgba(94, 188, 207, 0.14) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(ellipse 32% 26% at 12% 92%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%),
+    linear-gradient(
+      160deg,
+      #ffffff 0%,
+      #f0faf9 32%,
+      #e3f5f4 62%,
+      #e0f2f7 86%,
+      #e6f4f9 100%
+    );
+}
+
+.hero-heart {
+  color: color-mix(in oklab, var(--color-services-sky) 32%, transparent);
+}
+
+.services-background {
+  background:
+    radial-gradient(ellipse 42% 18% at 86% 14%, color-mix(in oklab, var(--color-background) 38%, transparent), transparent 76%),
+    radial-gradient(ellipse 38% 16% at 8% 64%, color-mix(in oklab, var(--color-background) 30%, transparent), transparent 78%),
+    linear-gradient(to bottom, #d9f2f1 0%, #ddf2f4 50%, #e1f3f7 100%);
+}
+
+.services-heart {
+  color: color-mix(in oklab, var(--color-primary) 15%, transparent);
+}
+
+.service-photo-overlay {
+  background: var(--service-photo-gradient);
+}
+
+.about-background {
+  background: linear-gradient(
+    to bottom,
+    #d9f2f1 0%,
+    #e6f7f5 26%,
+    #f5fcfc 40%,
+    #ffffff 50%,
+    #ffffff 100%
+  );
+}
+
+.about-coverflow {
+  --photo-width: 56%;
+  --photo-offset: 40%;
+  position: relative;
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
+  aspect-ratio: 1.28;
+  perspective: 1200px;
+  touch-action: pan-y;
+  user-select: none;
+  isolation: isolate;
+}
+
+.about-coverflow-photo {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  width: var(--photo-width);
+  height: auto;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--about-photo-shadow);
+  cursor: grab;
+  transform: translateX(-50%);
+  transition: transform 800ms cubic-bezier(0.45, 0, 0.2, 1), opacity 800ms ease, box-shadow 800ms ease;
+  will-change: transform;
+}
+
+.about-coverflow-photo:active { cursor: grabbing; }
+.about-coverflow-photo:hover { background: var(--card); }
+.about-coverflow-photo img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.about-coverflow-photo[data-position="center"] { z-index: 3; transform: translateX(-50%) translateZ(40px); }
+.about-coverflow-photo[data-position="left"] { z-index: 1; transform: translateX(calc(-50% - var(--photo-offset))) rotateY(16deg) scale(0.8); }
+.about-coverflow-photo[data-position="right"] { z-index: 2; transform: translateX(calc(-50% + var(--photo-offset))) rotateY(-16deg) scale(0.8); }
+.about-coverflow-photo[data-position="hidden"] { z-index: 0; opacity: 0; pointer-events: none; transform: translateX(-50%) translateZ(-150px) scale(0.7); }
+
+@media (min-width: 640px) {
+  .about-coverflow { --photo-width: 43%; --photo-offset: 65%; aspect-ratio: 1.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-coverflow-photo { transition: none; }
+}
+
+/*
+ * Seção "Onde estamos" — luz difusa + degradê menta/aqua.
+ * As formas orgânicas (manchas e arcos) ficam nos cantos, sempre atrás
+ * do mapa, para dar profundidade sem competir com o conteúdo.
+ */
+.location-background {
+  background:
+    radial-gradient(ellipse 55% 40% at 50% -10%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 68%),
+    radial-gradient(ellipse 40% 30% at 50% 55%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(155deg, #f3fbf9 0%, #e9f7f4 30%, #e2f4f6 64%, #eaf6fb 100%);
+}
+
+.location-blob {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.location-blob-sky {
+  background: radial-gradient(closest-side, rgba(94, 188, 207, 0.28) 0%, rgba(94, 188, 207, 0) 72%);
+}
+
+.location-blob-mint {
+  background: radial-gradient(closest-side, rgba(7, 140, 137, 0.16) 0%, rgba(7, 140, 137, 0) 72%);
+}
+
+.location-blob-glow {
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.location-lines {
+  fill: none;
+  stroke: color-mix(in oklab, var(--color-primary) 14%, transparent);
+  stroke-width: 1.5;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .location-blob-drift {
+    animation: hero-card-float 14s ease-in-out infinite;
+    will-change: transform;
+  }
+}
+
+
+
+@keyframes hero-heart-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+@keyframes hero-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.hero-heart-float {
+  animation: hero-heart-float 10s ease-in-out infinite;
+}
+
+.hero-heart-float-delayed {
+  animation: hero-heart-float 13s ease-in-out -4s infinite;
+}
+
+.hero-heart-float-slow {
+  animation: hero-heart-float 16s ease-in-out -8s infinite;
+}
+
+.hero-card-float {
+  animation: hero-card-float 5.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.28 0.055 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.055 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.055 255);
+  --primary: oklch(0.579 0.098 192.1);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.966 0.016 186);
+  --secondary-foreground: oklch(0.38 0.06 200);
+  --muted: oklch(0.966 0.007 230);
+  --muted-foreground: oklch(0.47 0.038 252);
+  --accent: oklch(0.569 0.215 22.8);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.569 0.215 22.8);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.925 0.014 210);
+  --input: oklch(0.925 0.014 210);
+  --ring: oklch(0.579 0.098 192.1);
+  --deep: oklch(0.42 0.072 198);
+  --deep-foreground: oklch(1 0 0);
+  --navy: oklch(0.365 0.102 257.8);
+  --navy-foreground: oklch(1 0 0);
+  --teal-soft: oklch(0.955 0.03 186);
+  --services-sky: #5ebccf;
+  --about-photo-shadow: 0 14px 34px color-mix(in oklab, var(--navy) 16%, transparent);
+  --service-photo-gradient: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--foreground) 65%, var(--deep)) 0%,
+    color-mix(in oklab, var(--deep) 94%, transparent) 25%,
+    color-mix(in oklab, var(--deep) 56%, transparent) 48%,
+    color-mix(in oklab, var(--primary) 12%, transparent) 72%,
+    transparent 100%
+  );
+  --chart-1: oklch(0.579 0.098 192.1);
+  --chart-2: oklch(0.569 0.215 22.8);
+  --chart-3: oklch(0.365 0.102 257.8);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.28 0.055 255);
+  --sidebar-primary: oklch(0.579 0.098 192.1);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.966 0.016 186);
+  --sidebar-accent-foreground: oklch(0.38 0.06 200);
+  --sidebar-border: oklch(0.925 0.014 210);
+  --sidebar-ring: oklch(0.579 0.098 192.1);
+}
+
+.dark {
+  --background: oklch(0.28 0.055 255);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.33 0.055 255);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.33 0.055 255);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.62 0.1 192);
+  --primary-foreground: oklch(0.15 0.03 220);
+  --secondary: oklch(0.36 0.045 250);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.36 0.045 250);
+  --muted-foreground: oklch(0.72 0.03 250);
+  --accent: oklch(0.62 0.19 22);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.1 192);
+  --chart-1: oklch(0.62 0.1 192);
+  --chart-2: oklch(0.62 0.19 22);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.33 0.055 255);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.62 0.1 192);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.36 0.045 250);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.62 0.1 192);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 25%, transparent);
+  }
+}
+
+/* Scroll reveal (aplicado via IntersectionObserver no componente Reveal) */
+.reveal {
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(35px);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    transition: none;
+  }
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
+  .animate-float,
+  .animate-float-slow,
+  .hero-heart-float,
+  .hero-heart-float-delayed,
+  .hero-heart-float-slow,
+  .hero-card-float {
+    animation: none;
+  }
+}
+
+/* Anel pulsante suave do botão flutuante de WhatsApp */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-primary) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 16px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
